@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-      - track/**
-    paths:
-      - "bundle.yaml.j2"
 
 jobs:
   publish-bundle-edge:
