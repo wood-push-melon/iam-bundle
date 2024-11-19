@@ -16,8 +16,6 @@ jobs:
       fail-fast: false
       matrix:
         bundle: [identity-platform]
-    env:
-      CHARMCRAFT_AUTH: ${{ secrets.CHARMCRAFT_CREDENTIALS }}
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - name: Install dependencies
@@ -59,9 +57,6 @@ jobs:
           cp ./LICENSE $BUILD_DIR/
           cd $BUILD_DIR
           charmcraft pack
-          charmcraft upload ./*.zip
-          export REVISION=$(charmcraft revisions ${{ matrix.bundle }} 2>&1 | awk 'NR==2 {print $1}')
-          charmcraft release ${{ matrix.bundle }} --revision $REVISION --channel=${{ steps.parse-inputs.outputs.destination_channel }}
       - name: Dump logs
         if: failure()
         run: |
