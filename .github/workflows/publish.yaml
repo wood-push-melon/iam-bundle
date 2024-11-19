@@ -60,4 +60,4 @@ jobs:
         if: failure()
         run: |
           printenv | sed 's;=.*;;' | sort
-          awk '{print}' /home/runner/.local/state/charmcraft/log/*.log
+          awk '{print}' /home/runner/.local/state/charmcraft/log/*.log || echo "No logs to process."
