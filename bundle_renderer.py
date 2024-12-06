@@ -19,7 +19,7 @@ CHANNELS = re.compile(r"^(latest/|[0-9].[0-9]/)?(edge|beta|candidate|stable)$")
 ROOT_DIR = Repo(Path(__file__), search_parent_directories=True).working_dir
 TEMPLATE_DIRS = [ROOT_DIR, Path(ROOT_DIR) / "templates"]
 
-
+# TODO: add tests
 @singledispatch
 def generate_output(output, content: str) -> None:
     raise NotImplementedError
